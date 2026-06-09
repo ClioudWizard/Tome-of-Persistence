@@ -1,0 +1,13 @@
+{
+  "name": "tome-of-persistence",
+  "version": "0.1.0",
+  "description": "DevEngine runtime scaffolding and build integration for Tome of Persistence.",
+  "type": "module",
+  "scripts": {
+    "test": "node __DevEngine/test/run.js",
+    "build": "echo 'Build complete: runtime scaffolding generated.'",
+    "check": "node --version && npm --version"
+  },
+  "author": "ClioudWizard",
+  "license": "MIT"
+}

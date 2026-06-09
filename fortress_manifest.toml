@@ -1,0 +1,7 @@
+[resource_limits]
+max_pipeline_runs = 50
+max_recursion_depth = 20
+max_serialization_records = 100
+max_fetch_calls_per_run = 10
+max_event_listeners_per_run = 20
+max_log_scrape_matches = 25
