@@ -1,180 +1,189 @@
-# 🔮 AI DevTools - Interactive CLI
+# 🔮 AI DevTools - Interactive CLI for Linux VM
 
 A powerful interactive CLI for AI-powered development assistance using Google Gemini and Anthropic Claude.
 
-## Features
+## ✨ Features
 
-✨ **AI-Powered Assistance**
-- Ask questions about code and development
-- Analyze code for bugs and improvements
-- Generate code snippets and complete modules
-- Debug errors with AI suggestions
-- Generate documentation automatically
-- Suggest refactoring improvements
-- Create test cases
+✅ **AI-Powered Development**
+- Interactive REPL interface
+- 19 development commands
+- Real-time code analysis
+- Error debugging assistance
+- Code generation templates
+- Documentation generation
 
-📊 **Project Context**
-- Load and track project structure
-- Maintain conversation history
-- Export conversations as JSON or Markdown
-- Analyze multiple files
+🤖 **Dual AI Provider Support**
+- Google Gemini (default)
+- Anthropic Claude (optional)
+- Configurable switching
 
-🚀 **Development Features**
-- Function generation
-- Test case generation
-- Module scaffolding
-- Component templates
-- API endpoint generation
+💾 **Project Intelligence**
+- Auto-scan project structure
+- Track conversation history
+- Export conversations (JSON/Markdown)
+- Persistent configuration
 
-## Installation
+## 🚀 Installation
 
-### Prerequisites
-- Node.js >= 14
-- API keys for Gemini and/or Claude
+### Quick Start
 
-### Setup
+```bash
+# Navigate to project
+cd ~/Tome-of-Persistence/ai-devtools
 
-1. Clone this repository
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+# Install dependencies
+npm install
 
-3. Initialize configuration:
-   ```bash
-   ./cli.js
-   > init
-   ```
+# Optional: Set API keys
+export GEMINI_API_KEY="your-gemini-api-key"
+export ANTHROPIC_API_KEY="your-anthropic-api-key"
 
-4. Set API keys:
-   ```bash
-   export GEMINI_API_KEY="your-gemini-key"
-   export ANTHROPIC_API_KEY="your-anthropic-key"
-   ```
+# Run the CLI
+node cli.js
+```
 
 ### Global Installation
 
 ```bash
+cd ai-devtools
 npm run install-global
 ai-devtools
 ```
 
-## Usage
+## 📋 Available Commands
 
-### Interactive Mode
+### Help & Info
+- `help` - Display all commands
+- `exit` - Quit the CLI
 
-Start the CLI:
+### Configuration
+- `init` - Initialize API key configuration
+- `config` - Show current settings
+
+### AI Queries
+- `ask <query>` - Ask the AI assistant
+- `analyze <file>` - Analyze code file
+- `debug <error>` - Debug error messages
+- `refactor <file>` - Suggest code improvements
+- `doc <file>` - Generate documentation
+
+### Code Generation
+- `generate function <description>` - Generate function
+- `generate test <description>` - Generate test cases
+- `generate module <description>` - Generate module
+- `generate component <description>` - Generate React component
+- `generate api <description>` - Generate API endpoint
+- `test <file>` - Generate tests for file
+
+### Project Management
+- `load <project-dir>` - Load project context
+- `context` - Show project information
+- `history` - Show conversation history
+- `export json` - Export as JSON
+- `export md` - Export as Markdown
+- `clear` - Clear conversation history
+
+## 💻 Usage Examples
+
+### Interactive Session
+
 ```bash
-./cli.js
-# or
-ai-devtools
+🔮 AI DevTools - Interactive CLI for Linux VM
+Type "help" for available commands
+
+🔮 ai-devtools> help
+
+📚 Available Commands:
+  help                    - Show this help message
+  init                    - Initialize AI assistant configuration
+  config                  - Show current configuration
+  ask <query>             - Ask AI assistant a question
+  ...
+
+🔮 ai-devtools> ask How do I implement binary search?
+🤔 Processing...
+
+💬 Assistant:
+Binary search is an efficient algorithm for finding an element in a sorted array...
+
+🔮 ai-devtools>
 ```
 
-You'll see the prompt:
-```
-🔮 ai-devtools> 
+### Generate Code
+
+```bash
+🔮 ai-devtools> generate function "validate email address"
+🔨 Generating function...
+
+📄 Generated Code:
+/**
+ * Validates if a string is a valid email address
+ * @param {string} email - Email to validate
+ * @returns {boolean} True if valid, false otherwise
+ */
+function validateEmail(email) {
+  const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+  return emailRegex.test(email);
+}
+
+// Usage
+console.log(validateEmail('user@example.com')); // true
+console.log(validateEmail('invalid-email'));   // false
 ```
 
-### Available Commands
+### Analyze Code
 
-#### Basic Commands
+```bash
+🔮 ai-devtools> analyze src/utils.js
+🔍 Analyzing code...
 
-**help** - Show available commands
-```
-> help
-```
-
-**exit** - Exit the CLI
-```
-> exit
-```
-
-#### Configuration
-
-**init** - Initialize AI assistant
-```
-> init
+📊 Analysis:
+✓ Code Quality: Good
+⚠ Issues Found:
+  - Missing error handling in line 45
+  - Potential memory leak with event listener
+✓ Performance: No major concerns
 ```
 
-**config** - Show current configuration
-```
-> config
+### Debug Error
+
+```bash
+🔮 ai-devtools> debug "TypeError: Cannot read property 'map' of undefined"
+🐛 Debugging...
+
+🔧 Debug Suggestions:
+This error occurs when you're trying to call .map() on a value that is undefined.
+
+Common causes:
+1. Variable not initialized
+2. API response not parsed correctly
+3. Destructuring assignment failed
+
+Solutions:
+1. Add null checks: if (array && array.map)
+2. Use optional chaining: array?.map(...)
+3. Provide default value: array || []
 ```
 
-#### AI Queries
+### Load Project & Ask
 
-**ask** - Ask a question
-```
-> ask How do I implement a binary search in JavaScript?
-```
+```bash
+🔮 ai-devtools> load ~/my-project
+📂 Loading project from ~/my-project...
+✅ Project context loaded.
 
-**analyze** - Analyze a code file
-```
-> analyze src/utils.js
-```
-
-**debug** - Get debugging help
-```
-> debug "TypeError: Cannot read property 'map' of undefined"
-```
-
-**refactor** - Suggest refactoring improvements
-```
-> refactor src/api.js
+🔮 ai-devtools> ask What are the main dependencies?
+💬 Assistant:
+Based on your package.json, the main dependencies are:
+1. express@^4.18.0 - Web framework
+2. react@^18.2.0 - UI library
+3. axios@^1.3.0 - HTTP client
+...
 ```
 
-**doc** - Generate documentation
-```
-> doc src/helpers.js
-```
+## ⚙️ Configuration
 
-#### Code Generation
-
-**generate** - Generate code
-```
-> generate function "validate email addresses"
-> generate test "user authentication"
-> generate module "cache manager"
-> generate component "user profile card"
-> generate api "POST endpoint for creating users"
-```
-
-**test** - Generate test cases
-```
-> test src/math.js
-```
-
-#### Project Management
-
-**load** - Load project context
-```
-> load /path/to/project
-```
-
-**context** - Show project context
-```
-> context
-```
-
-**history** - Show conversation history
-```
-> history
-```
-
-**clear** - Clear conversation history
-```
-> clear
-```
-
-**export** - Export conversation
-```
-> export json
-> export md
-```
-
-## Configuration
-
-Configuration is stored in `~/.ai-devtools/config.json`:
+Configuration saved to `~/.ai-devtools/config.json`:
 
 ```json
 {
@@ -198,134 +207,76 @@ export ANTHROPIC_API_KEY="your-anthropic-key"
 export AI_PROVIDER="gemini"  # or "claude"
 ```
 
-## Examples
-
-### Example 1: Debug an Error
-
-```
-> debug "ReferenceError: myFunction is not defined at Object.<anonymous>"
-💬 Assistant:
-This error means you're trying to use a function that hasn't been defined yet.
-Common causes:
-1. Function is defined after it's called
-2. Function is in a different scope
-3. Typo in function name
-...
-```
-
-### Example 2: Generate a Function
-
-```
-> generate function "shuffle an array randomly"
-📄 Generated Code:
-
-function shuffleArray(array) {
-  // Fisher-Yates shuffle algorithm
-  const result = [...array];
-  for (let i = result.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [result[i], result[j]] = [result[j], result[i]];
-  }
-  return result;
-}
-
-// Example usage:
-const nums = [1, 2, 3, 4, 5];
-console.log(shuffleArray(nums));
-```
-
-### Example 3: Analyze Code
-
-```
-> analyze src/app.js
-💬 Assistant:
-📊 Analysis:
-✓ Code Quality: Good
-⚠ Issues Found:
-  - Missing error handling in line 45
-  - Potential memory leak with event listener
-✓ Performance: No major concerns
-⚠ Security: Input validation needed
-...
-```
-
-### Example 4: Load Project and Ask Questions
-
-```
-> load ~/my-project
-✅ Project context loaded.
-
-> ask What are the main dependencies in this project?
-💬 Assistant:
-Based on the project context, the main dependencies are:
-1. express - Web framework
-2. react - UI library
-3. axios - HTTP client
-...
-```
-
-## Project Structure
-
-```
-ai-devtools/
-├── cli.js                 # Main CLI entry point
-├── package.json           # NPM configuration
-├── README.md              # This file
-└── lib/
-    ├── manager.js         # AI provider management
-    ├── parser.js          # Command parser
-    ├── context.js         # Project context manager
-    └── generator.js       # Code generator
-```
-
-## API Providers
+## 🔗 API Providers
 
 ### Google Gemini
 - Get API key: https://ai.google.dev
 - Model: `gemini-pro`
-- Good for: General queries, code analysis, documentation
+- Best for: General queries, code analysis, documentation
 
 ### Anthropic Claude
 - Get API key: https://console.anthropic.com
 - Model: `claude-3-sonnet-20240229`
-- Good for: Complex reasoning, detailed analysis
+- Best for: Complex reasoning, detailed analysis
 
-## Troubleshooting
+## 📁 Project Structure
+
+```
+ai-devtools/
+├── cli.js              # Main interactive CLI
+├── package.json        # NPM configuration
+├── README.md           # Documentation
+└── lib/
+    ├── manager.js      # AI provider management
+    ├── parser.js       # Command parser
+    ├── context.js      # Project context manager
+    └── generator.js    # Code generation
+```
+
+## 🐛 Troubleshooting
 
 ### "No AI provider configured"
 ```bash
-# Set environment variables or run:
-ai-devtools
-> init
+# Set environment variables
+export GEMINI_API_KEY="your-key"
+node cli.js
 ```
 
-### API Key Issues
+### API Connection Issues
 ```bash
-# Verify keys are set
+# Verify API keys
 echo $GEMINI_API_KEY
 echo $ANTHROPIC_API_KEY
 
-# Check config file
-cat ~/.ai-devtools/config.json
+# Check internet connection
+ping google.com
 ```
 
-### Commands Not Found
+### Module Not Found
 ```bash
-# Reinstall globally
-npm run install-global
+# Reinstall dependencies
+npm install
 
-# Or run locally
-node ./cli.js
+# Or specific modules
+npm install @google/generative-ai @anthropic-ai/sdk
 ```
 
-## Contributing
+## 🎯 Next Steps
 
-Contributions are welcome! Please submit pull requests to improve the CLI.
+1. ✅ Install and configure
+2. ✅ Load your project with `load <path>`
+3. ✅ Start asking questions with `ask`
+4. ✅ Generate code with `generate`
+5. ✅ Export conversations with `export`
 
-## License
+## 📝 License
 
 MIT
 
-## Support
+## 👤 Author
 
-For issues or questions, please open an issue on GitHub.
+ClioudWizard
+
+---
+
+**Enjoy your AI-powered development workflow! 🚀**

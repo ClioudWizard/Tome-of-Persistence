@@ -20,14 +20,14 @@ const generator = new CodeGenerator();
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
-  prompt: '🔮 ai-devtools> '
+  prompt: '\ud83d\udd2e ai-devtools> '
 });
 
 const commands = {
   help: {
     description: 'Show available commands',
     handler: () => {
-      console.log('\n📚 Available Commands:');
+      console.log('\n\ud83d\udcda Available Commands:');
       console.log('  help                    - Show this help message');
       console.log('  init                    - Initialize AI assistant configuration');
       console.log('  config                  - Show current configuration');
@@ -49,16 +49,16 @@ const commands = {
   init: {
     description: 'Initialize AI assistant',
     handler: async () => {
-      console.log('\n⚙️  Initializing AI Assistant Configuration...\n');
+      console.log('\n\u2699\ufe0f  Initializing AI Assistant Configuration...\n');
       await manager.initialize();
-      console.log('✅ Configuration saved.\n');
+      console.log('\u2705 Configuration saved.\n');
     }
   },
   config: {
     description: 'Show configuration',
     handler: () => {
       const config = manager.getConfig();
-      console.log('\n⚙️  Current Configuration:');
+      console.log('\n\u2699\ufe0f  Current Configuration:');
       console.log(JSON.stringify(config, null, 2));
       console.log('');
     }
@@ -67,12 +67,12 @@ const commands = {
     description: 'Ask assistant',
     handler: async (query) => {
       if (!query) {
-        console.log('⚠️  Please provide a query. Usage: ask <query>');
+        console.log('\u26a0\ufe0f  Please provide a query. Usage: ask <query>');
         return;
       }
-      console.log('\n🤔 Processing...\n');
+      console.log('\n\ud83e\udd14 Processing...\n');
       const response = await manager.query(query, context.getContext());
-      console.log(`💬 Assistant:\n${response}\n`);
+      console.log(`\ud83d\udcac Assistant:\n${response}\n`);
       context.addInteraction('user', query, response);
     }
   },
@@ -80,13 +80,13 @@ const commands = {
     description: 'Generate code',
     handler: async (type, ...args) => {
       if (!type) {
-        console.log('⚠️  Usage: generate <type> [args]');
+        console.log('\u26a0\ufe0f  Usage: generate <type> [args]');
         console.log('  Types: function, test, module, component, api');
         return;
       }
-      console.log(`\n🔨 Generating ${type}...\n`);
+      console.log(`\n\ud83d\udd28 Generating ${type}...\n`);
       const generated = await generator.generate(type, args.join(' '));
-      console.log('📄 Generated Code:');
+      console.log('\ud83d\udcc4 Generated Code:');
       console.log(generated);
       console.log('');
     }
@@ -95,13 +95,13 @@ const commands = {
     description: 'Analyze code',
     handler: async (file) => {
       if (!file || !fs.existsSync(file)) {
-        console.log(`⚠️  File not found: ${file}`);
+        console.log(`\u26a0\ufe0f  File not found: ${file}`);
         return;
       }
       const code = fs.readFileSync(file, 'utf8');
-      console.log('\n🔍 Analyzing code...\n');
+      console.log('\n\ud83d\udd0d Analyzing code...\n');
       const analysis = await manager.analyzeCode(code, file);
-      console.log(`📊 Analysis:\n${analysis}\n`);
+      console.log(`\ud83d\udcca Analysis:\n${analysis}\n`);
       context.addInteraction('analysis', file, analysis);
     }
   },
@@ -109,12 +109,12 @@ const commands = {
     description: 'Debug error',
     handler: async (error) => {
       if (!error) {
-        console.log('⚠️  Please provide an error message or stack trace');
+        console.log('\u26a0\ufe0f  Please provide an error message or stack trace');
         return;
       }
-      console.log('\n🐛 Debugging...\n');
+      console.log('\n\ud83d\udc1b Debugging...\n');
       const suggestions = await manager.debugError(error);
-      console.log(`🔧 Debug Suggestions:\n${suggestions}\n`);
+      console.log(`\ud83d\udd27 Debug Suggestions:\n${suggestions}\n`);
       context.addInteraction('debug', error, suggestions);
     }
   },
@@ -122,13 +122,13 @@ const commands = {
     description: 'Suggest refactoring',
     handler: async (file) => {
       if (!file || !fs.existsSync(file)) {
-        console.log(`⚠️  File not found: ${file}`);
+        console.log(`\u26a0\ufe0f  File not found: ${file}`);
         return;
       }
       const code = fs.readFileSync(file, 'utf8');
-      console.log('\n♻️  Refactoring analysis...\n');
+      console.log('\n\u267b\ufe0f  Refactoring analysis...\n');
       const suggestions = await manager.suggestRefactoring(code, file);
-      console.log(`✨ Refactoring Suggestions:\n${suggestions}\n`);
+      console.log(`\u2728 Refactoring Suggestions:\n${suggestions}\n`);
       context.addInteraction('refactor', file, suggestions);
     }
   },
@@ -136,13 +136,13 @@ const commands = {
     description: 'Generate documentation',
     handler: async (file) => {
       if (!file || !fs.existsSync(file)) {
-        console.log(`⚠️  File not found: ${file}`);
+        console.log(`\u26a0\ufe0f  File not found: ${file}`);
         return;
       }
       const code = fs.readFileSync(file, 'utf8');
-      console.log('\n📖 Generating documentation...\n');
+      console.log('\n\ud83d\udcd6 Generating documentation...\n');
       const doc = await manager.generateDocumentation(code, file);
-      console.log(`📚 Documentation:\n${doc}\n`);
+      console.log(`\ud83d\udcda Documentation:\n${doc}\n`);
       context.addInteraction('doc', file, doc);
     }
   },
@@ -150,13 +150,13 @@ const commands = {
     description: 'Generate tests',
     handler: async (file) => {
       if (!file || !fs.existsSync(file)) {
-        console.log(`⚠️  File not found: ${file}`);
+        console.log(`\u26a0\ufe0f  File not found: ${file}`);
         return;
       }
       const code = fs.readFileSync(file, 'utf8');
-      console.log('\n🧪 Generating test cases...\n');
+      console.log('\n\ud83e\uddea Generating test cases...\n');
       const tests = await generator.generateTests(code, file);
-      console.log(`✅ Generated Tests:\n${tests}\n`);
+      console.log(`\u2705 Generated Tests:\n${tests}\n`);
       context.addInteraction('test', file, tests);
     }
   },
@@ -164,7 +164,7 @@ const commands = {
     description: 'Show project context',
     handler: () => {
       const ctx = context.getContext();
-      console.log('\n📍 Project Context:');
+      console.log('\n\ud83d\udccd Project Context:');
       console.log(JSON.stringify(ctx, null, 2));
       console.log('');
     }
@@ -173,16 +173,16 @@ const commands = {
     description: 'Load project',
     handler: (projectDir) => {
       if (!projectDir) {
-        console.log('⚠️  Usage: load <project-directory>');
+        console.log('\u26a0\ufe0f  Usage: load <project-directory>');
         return;
       }
       if (!fs.existsSync(projectDir)) {
-        console.log(`⚠️  Directory not found: ${projectDir}`);
+        console.log(`\u26a0\ufe0f  Directory not found: ${projectDir}`);
         return;
       }
-      console.log(`\n📂 Loading project from ${projectDir}...`);
+      console.log(`\n\ud83d\udcc2 Loading project from ${projectDir}...`);
       context.loadProject(projectDir);
-      console.log('✅ Project context loaded.\n');
+      console.log('\u2705 Project context loaded.\n');
     }
   },
   export: {
@@ -190,27 +190,27 @@ const commands = {
     handler: (format) => {
       format = format || 'json';
       if (!['json', 'md'].includes(format)) {
-        console.log('⚠️  Format must be json or md');
+        console.log('\u26a0\ufe0f  Format must be json or md');
         return;
       }
       const exported = context.exportConversation(format);
       const filename = `conversation.${format === 'json' ? 'json' : 'md'}`;
       fs.writeFileSync(filename, exported);
-      console.log(`\n💾 Exported to ${filename}\n`);
+      console.log(`\n\ud83d\udcbe Exported to ${filename}\n`);
     }
   },
   clear: {
     description: 'Clear history',
     handler: () => {
       context.clearHistory();
-      console.log('\n🗑️  Conversation history cleared.\n');
+      console.log('\n\ud83d\uddd1\ufe0f  Conversation history cleared.\n');
     }
   },
   history: {
     description: 'Show history',
     handler: () => {
       const hist = context.getHistory();
-      console.log('\n📜 Conversation History:');
+      console.log('\n\ud83d\udcdc Conversation History:');
       if (hist.length === 0) {
         console.log('  (empty)');
       } else {
@@ -224,7 +224,7 @@ const commands = {
   exit: {
     description: 'Exit CLI',
     handler: () => {
-      console.log('\n👋 Goodbye!\n');
+      console.log('\n\ud83d\udc4b Goodbye!\n');
       process.exit(0);
     }
   }
@@ -237,19 +237,19 @@ async function processCommand(line) {
   
   const cmd = commands[command];
   if (!cmd) {
-    console.log(`⚠️  Unknown command: ${command}. Type 'help' for available commands.\n`);
+    console.log(`\u26a0\ufe0f  Unknown command: ${command}. Type 'help' for available commands.\n`);
     return;
   }
   
   try {
     await cmd.handler(...args);
   } catch (error) {
-    console.error(`\n❌ Error: ${error.message}\n`);
+    console.error(`\n\u274c Error: ${error.message}\n`);
   }
 }
 
 async function main() {
-  console.log('\n🔮 AI DevTools - Interactive CLI for Linux VM');
+  console.log('\n\ud83d\udd2e AI DevTools - Interactive CLI for Linux VM');
   console.log('Type "help" for available commands\n');
   
   await manager.initialize();
@@ -262,7 +262,7 @@ async function main() {
   });
   
   rl.on('close', () => {
-    console.log('\n👋 Goodbye!\n');
+    console.log('\n\ud83d\udc4b Goodbye!\n');
     process.exit(0);
   });
 }
