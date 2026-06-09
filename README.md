@@ -37,4 +37,25 @@ The scaffold provides:
 - telemetry helpers for `listComponents`, `scrapeDeepLogs`, and `traceLineage`
 - a test harness for runtime validation
 - Crostini VM build integration support
+- a piped Crostini resource environment for experiments
+
+## Crostini Resource Pipeline
+
+This project also includes a resource environment helper that pipes your Crostini shell state into the workspace.
+
+### Bootstrap the resource environment
+
+1. Run from your Crostini VM:
+   - `bash crostini_resource_pipeline.sh`
+2. Load the generated pipeline:
+   - `source resource_env/load_resource_env.sh`
+3. Run your experiments with the injected environment:
+   - `npm test`
+   - `npm run resource:bootstrap`
+
+If you want to migrate the project into your VM and initialize the Crostini bridge, use:
+
+- `bash migrate_to_crostini.sh`
+
+See `RESOURCE_PIPELINE.md` and `CROSTINI_MIGRATION.md` for details.
 
