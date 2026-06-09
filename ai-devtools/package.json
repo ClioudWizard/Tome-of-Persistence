@@ -1,0 +1,30 @@
+{
+  "name": "ai-devtools",
+  "version": "1.0.0",
+  "description": "Interactive CLI for AI-powered development assistance using Gemini and Claude",
+  "type": "module",
+  "main": "cli.js",
+  "bin": {
+    "ai-devtools": "./cli.js"
+  },
+  "scripts": {
+    "start": "node cli.js",
+    "dev": "NODE_ENV=development node cli.js",
+    "install-global": "npm install -g ."
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.1.3",
+    "@anthropic-ai/sdk": "^0.4.0"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "ai",
+    "devtools",
+    "gemini",
+    "claude",
+    "code-generation",
+    "development"
+  ],
+  "author": "ClioudWizard",
+  "license": "MIT"
+}
