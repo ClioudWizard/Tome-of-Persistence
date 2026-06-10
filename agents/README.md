@@ -29,3 +29,6 @@ All agents in this workspace adhere to the `TOME_DEVENGINE_INTEGRATION` protocol
 
 ## Usage
 Open the relevant agent file when working on that agent's development. Each document is the dedicated "channel" for tracking design, implementation, and iteration.
+## Synergy and Tuning
+
+For system-level coordination and agent tuning, use `AGENT_SYNERGY.md` at the repo root as the shared reference.

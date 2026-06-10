@@ -7,6 +7,7 @@
     "test": "node __DevEngine/test/run.js",
     "build": "echo 'Build complete: runtime scaffolding generated.'",
     "check": "node --version && npm --version",
+    "bootstrap": "bash bootstrap_repo.sh",
     "resource:bootstrap": "bash crostini_resource_pipeline.sh",
     "cli": "node __DevEngine/cli.js"
   },
