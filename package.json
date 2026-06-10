@@ -7,7 +7,8 @@
     "test": "node __DevEngine/test/run.js",
     "build": "echo 'Build complete: runtime scaffolding generated.'",
     "check": "node --version && npm --version",
-    "resource:bootstrap": "bash crostini_resource_pipeline.sh"
+    "resource:bootstrap": "bash crostini_resource_pipeline.sh",
+    "cli": "node __DevEngine/cli.js"
   },
   "author": "ClioudWizard",
   "license": "MIT"
